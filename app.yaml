@@ -1,0 +1,5 @@
+command: [
+  "uvicorn",
+  "app:app",
+  "--reload"
+]

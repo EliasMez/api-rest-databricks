@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>API Voyager</title>
+    <link rel="stylesheet" href="{{ base_path }}/static/css/home.css"
+</head>
+
+<body>
+
+<div class="top-container">
+    <div class="row top-row">
+        <h1 class="title title--left">API Voyager</h1>
+
+        <div class="top-actions">
+            <div class="counter">
+                <button class="btn" onclick="setMin()">min</button>
+                <input type="number" id="topValue" value="10" min="0" oninput="updateApplyState()">
+                <button class="btn" onclick="setMax()">max</button>
+            </div>
+
+            <button class="btn apply" onclick="applyFilters()">Apply</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <select id="tableSelect" required>
+            <option value="" disabled hidden selected>-- table --</option>
+            {% for table in tables %}
+                <option value="{{ table }}">{{ table }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div id="filtersContainer">
+        <div class="row filter-row">
+            <select class="columnSelect" required>
+                <option value="" disabled hidden selected>-- column --</option>
+            </select>
+
+            <input type="text" class="filterValue" placeholder="Valeur">
+
+            <button class="btn" onclick="removeFilterRow(this)">−</button>
+        </div>
+
+        <div class="row add-row">
+            <div class="add-placeholder add-placeholder--select"></div>
+            <div class="add-placeholder add-placeholder--value"></div>
+
+            <div class="actions">
+                <button class="btn reset-btn" title="Réinitialiser les filtres" onclick="resetFilters()">Reset Filters</button>
+                <button class="btn add-btn" title="Ajouter un filtre en dessous">+</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ base_path }}/static/js/script.js" defer></script>
+</body>
+</html>
